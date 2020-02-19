@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+#  thymeleaf:
+#    cache: false
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  h2:
+    console:
+      enabled: true  # H2 웹 콘솔을 사용하겠다는 의미
+
+  datasource:
+    driver-class-name: org.h2.Driver  #h2 드라이버 설정
+    url: jdbc:h2:mem:testdb
+  
+  jpa:
+    hibernate:
+      ddl-auto: update # 스키마관리 
+    show-sql: true # sql 디버그
+    properties:
+      hibernate:
+        format_sql: true # sql 포멧정리
+          
+  devtools: # 핫리로드 사용
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    org:
+      springframework.web: INFO
+      hibernate.SQL: DEBUG
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+      h2.server.web: INFO
